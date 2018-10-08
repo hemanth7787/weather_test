@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="css3clock.css" />
+    <style>
+        body{
+    height: 480px;
+    overflow:hidden;
+/*background-image: linear-gradient(#ffe102, #ff2d00);*/
+}
+.outer_face {
+    margin-left: 212px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.logo {
+
+    position: absolute;
+    top: 0;
+    right: 15px;
+    width: 75px;
+
+}
+ @font-face {
+    font-family: roboto;
+    src: url(Roboto-Bold.ttf);
+}
+
+
+.footer {
+
+position: absolute;
+left: 210px;
+bottom: 30px;
+font-size: 34px;
+z-index: 1000;
+font-family: roboto;
+color: #fff;
+}
+.footer_background{
+position: absolute;
+background-color: rgba(0, 0, 0, 1);
+height: 74px;
+width: 624px;
+bottom: 8px;
+left: 8px;
+}
+    </style>
+</head>
+
+<body>
+    <div id="liveclock" class="outer_face">
+
+        <div class="marker oneseven"></div>
+        <div class="marker twoeight"></div>
+        <div class="marker fourten"></div>
+        <div class="marker fiveeleven"></div>
+
+        <div class="inner_face">
+            <div class="hand hour"></div>
+            <div class="hand minute"></div>
+            <div class="hand second"></div>
+        </div>
+
+    </div>
+    <div>
+        <img class="logo" src="je.png">
+    </div>
+
+    <a class="weatherwidget-io" href="https://forecast7.com/en/12d9777d59/bengaluru/" data-label_1="BENGALURU"
+        data-label_2="WEATHER" data-days="3" data-icons="Iconvault" data-mode="Current" data-textcolor="#fff"
+        data-basecolor="rgba(0, 0, 0, 1)"></a>
+    <div><a class="footer">Good morning</a></div>
+    <div class="footer_background"></div>
+    <script src="jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        /***********************************************
+        * CSS3 Analog Clock- by JavaScript Kit (www.javascriptkit.com)
+        * Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and 100s more
+        ***********************************************/
+
+        var $hands = $('#liveclock div.hand')
+
+        window.requestAnimationFrame = window.requestAnimationFrame
+            || window.mozRequestAnimationFrame
+            || window.webkitRequestAnimationFrame
+            || window.msRequestAnimationFrame
+            || function (f) { setTimeout(f, 60) }
+
+
+        function updateclock() {
+            var curdate = new Date()
+            var hour_as_degree = (curdate.getHours() + curdate.getMinutes() / 60) / 12 * 360
+            var minute_as_degree = curdate.getMinutes() / 60 * 360
+            var second_as_degree = (curdate.getSeconds() + curdate.getMilliseconds() / 1000) / 60 * 360
+            $hands.filter('.hour').css({ transform: 'rotate(' + hour_as_degree + 'deg)' })
+            $hands.filter('.minute').css({ transform: 'rotate(' + minute_as_degree + 'deg)' })
+            $hands.filter('.second').css({ transform: 'rotate(' + second_as_degree + 'deg)' })
+            requestAnimationFrame(updateclock)
+        }
+
+        requestAnimationFrame(updateclock)
+
+
+    </script>
+
+    <script>
+        !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+    </script>
+    <script>
+        var now = new Date();
+        current_hour = now.getHours();
+        // current_hour = 19;
+        if (current_hour > 5 && current_hour < 11) {
+            $("body").css("background-image", 'url("morning.jpg")');
+        }
+        else if (current_hour >= 11 && current_hour < 16) {
+            $("body").css("background-image", 'url("sky.jpg")');
+        }
+        else if (current_hour >= 16 && current_hour < 19) {
+            $("body").css("background-image", 'url("evening.jpg")');
+        }
+        else if (current_hour >= 19 && current_hour < 23) {
+            $("body").css("background-image", 'url("night2.jpg")');
+        }
+
+        if (current_hour > 5 && current_hour < 12) {
+            $(".footer").html("Good Morning");
+        }
+        else if (current_hour >= 12 && current_hour < 17) {
+            $(".footer").html("Good Afternoon");
+        }
+        else if (current_hour >= 17) {
+            $(".footer").html("Happy Shopping");
+        }
+
+    </script>
+</body>
+
+</html>
