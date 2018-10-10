@@ -163,7 +163,7 @@ color: white;
     </script>
 <script>
         var cityName = 'Bengaluru';
-        var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=6a70868b22b621d4d5ea02f346e19807&units=metric';
+        var weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=6a70868b22b621d4d5ea02f346e19807&units=metric';
 
         function updatePage(temp, temp_min, temp_max, weatherCond, weatherIconId){
             $("#temp").html(Math.round( temp * 10) / 10 + "&#8451");
@@ -184,7 +184,7 @@ color: white;
                         localStorage.setItem('temp_min', obj.main.temp_min);
                         localStorage.setItem('temp_max', obj.main.temp_max);
                         localStorage.setItem('weatherCond', obj.weather[0].main);
-                        localStorage.setItem('weatherIcon', 'http://openweathermap.org/img/w/' + obj.weather[0].icon + '.png');
+                        //localStorage.setItem('weatherIcon', 'http://openweathermap.org/img/w/' + obj.weather[0].icon + '.png');
                         localStorage.setItem('weatherIconId', obj.weather[0].id);
                         // UPDATE PAGE
                         updatePage(obj.main.temp, obj.main.temp_min, obj.main.temp_max, obj.weather[0].main,  obj.weather[0].id);
