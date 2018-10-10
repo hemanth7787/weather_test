@@ -10,16 +10,11 @@
     <style>
         #myclock {
             position: absolute;
-
-left: 324px;
-
-top: 39px;
-
-background-color: #fff;
-
-border-radius: 100%;
-
-width: 250px;
+            left: 324px;
+            top: 39px;
+            background-color: #fff;
+            border-radius: 100%;
+            width: 250px;
         }
 
         body {
@@ -28,124 +23,107 @@ width: 250px;
         }
 
         .logo {
-        position: absolute;
-        top: 0;
-        right: 15px;
-        width: 75px;
+            position: absolute;
+            top: 0;
+            right: 15px;
+            width: 75px;
         }
 
-        globaltext{
-            color:blanchedalmond;
+        globaltext {
+            color: blanchedalmond;
         }
 
- @font-face {
-    font-family: roboto;
-    src: url(Roboto-Bold.ttf);
-}
+        @font-face {
+            font-family: roboto;
+            src: url(Roboto-Bold.ttf);
+        }
 
- @font-face {
-    font-family: roboto-regular;
-    src: url(Roboto-regular.ttf);
-}
-.temp{
-    position: absolute;
-    top: 164px;
-    left: 59px;
-    font-size: 61px;
-    color: white;
+        @font-face {
+            font-family: roboto-regular;
+            src: url(Roboto-regular.ttf);
+        }
 
 
-}
 
-.weathercondtext{
-    width: 200px;
 
-height: 100px;
 
-position: absolute;
+        .weathercondtext {
+            width: 250px;
+            height: 100px;
+            position: absolute;
+            left: 34px;
+            top: 254px;
+            font-size: 24px;
+            font-family: roboto;
+            color: white;
+            text-align: center;
+        }
 
-left: 34px;
+        .footerDiv {
+            width: 620px;
+            text-align: center;
+            height: 100px;
+            bottom: 20px;
+            position: absolute;
+            font-size: 84px;
+        }
 
-top: 245px;
+        .footer {
+            z-index: 1000;
+            font-family: roboto;
+            color: #fff;
+        }
 
-font-size: 24px;
+        .footer_background {
+            position: absolute;
+            /*background-color: rgba(0, 0, 0, 1);*/
+            height: 132px;
+            width: 624px;
+            bottom: 8px;
+            left: 8px;
+        }
 
-font-family: roboto;
+        #weatherIcon {
+            font-size: 168px;
+            position: absolute;
+            left: 34px;
+            top: 20px;
+            color: white;
+            width: 250px;
+            height: 184px;
+            text-align: center;
 
-color: white;
+        }
 
-text-align: center;
-}
-
-    .footer {
-
-position: absolute;
-
-left: 50px;
-
-bottom: 30px;
-
-font-size: 82px;
-
-z-index: 1000;
-
-font-family: roboto;
-
-color: #fff;
-    }
-    .footer_background{
-    position: absolute;
-    /*background-color: rgba(0, 0, 0, 1);*/
-    height: 132px;
-    width: 624px;
-    bottom: 8px;
-    left: 8px;
-    }
-
-    .weathericon{
-        font-size: 168px;
-
-position: absolute;
-
-left: 47px;
-
-top: 21px;
-
-color: white;
-    }
+        .tempDiv {
+            position: absolute;
+            left: 34px;
+            top: 175px;
+            color: white;
+            width: 250px;
+            height: 76px;
+            text-align: center;
+            font-size: 64px;
+        }
     </style>
 </head>
 
 <body>
-        <a class="temp globaltext" id="temp"></a>
-        <div class="weathercondtext globaltext"><a id="weatherCond">Weather condition</a></div>
-        
+    <div id="weatherIcon"></div>
+    <div class="tempDiv"><a class="globaltext" id="temp"></a></div>
+
+    <div class="weathercondtext globaltext"><a id="weatherCond">Weather condition</a></div>
+
     <div id="background">
         <div id="myclock"></div>
     </div>
     <img class="logo" src="je.png">
-    <div><a class="footer globaltext">Good morning</a></div>
+    <div class="footerDiv"><a class="footer globaltext">Loading ..</a></div>
     <div class="footer_background"></div>
-
-    <!-- <img id="icon" src="" alt="">
-    <a id="weatherCond"></a>
-     -->
-
-
-
-    <div id="weatherIcon"></div>
-
-
-
-
-
 
     <script src="jquery-3.3.1.slim.min.js"></script>
     <script src="js/jquery.thooClock.js"></script>
     <script>
-        // onAlarm: function(){},
-        // offAlarm: function(){},
-        // onEverySecond: function(){},
         $('#myclock').thooClock({
             size: 250,
             dialColor: '#000000',
@@ -161,15 +139,14 @@ color: white;
 
         });
     </script>
-<script>
+    <script>
         var cityName = 'Bengaluru';
         var weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=6a70868b22b621d4d5ea02f346e19807&units=metric';
 
-        function updatePage(temp, temp_min, temp_max, weatherCond, weatherIconId){
-            $("#temp").html(Math.round( temp * 10) / 10 + "&#8451");
-            $("#weatherIcon").html( '<i class="weathericon owf owf-'+weatherIconId+'"></i>')
+        function updatePage(temp, temp_min, temp_max, weatherCond, weatherIconId) {
+            $("#temp").html(Math.round(temp * 10) / 10 + "&#8451");
+            $("#weatherIcon").html('<i class="weathericon owf owf-' + weatherIconId + '"></i>')
             $("#weatherCond").html(weatherCond)
-            
         }
         function makeRequest() {
             try {
@@ -181,14 +158,14 @@ color: white;
                         // console.log(xhttp.responseText);
                         var obj = JSON.parse(xhttp.responseText);
                         localStorage.setItem('temp', obj.main.temp);
-                        localStorage.setItem('temp_min', obj.main.temp_min);
-                        localStorage.setItem('temp_max', obj.main.temp_max);
+                        // localStorage.setItem('temp_min', obj.main.temp_min);
+                        // localStorage.setItem('temp_max', obj.main.temp_max);
                         localStorage.setItem('weatherCond', obj.weather[0].main);
                         //localStorage.setItem('weatherIcon', 'http://openweathermap.org/img/w/' + obj.weather[0].icon + '.png');
                         localStorage.setItem('weatherIconId', obj.weather[0].id);
                         // UPDATE PAGE
-                        updatePage(obj.main.temp, obj.main.temp_min, obj.main.temp_max, obj.weather[0].main,  obj.weather[0].id);
-                        setTimeout(makeRequest, 200000000);
+                        updatePage(obj.main.temp, obj.main.temp_min, obj.main.temp_max, obj.weather[0].main, obj.weather[0].id);
+                        setTimeout(makeRequest, 20000);
                     }
                 };
                 xhttp.open("GET", weatherUrl, true);
@@ -199,6 +176,18 @@ color: white;
         }
 
         makeRequest();
+        var now = new Date();
+        current_hour = now.getHours();
+        current_hour=18;
+        if (current_hour > 5 && current_hour < 12) {
+            $(".footer").html("Good Morning");
+        }
+        else if (current_hour >= 12 && current_hour < 17) {
+            $(".footer").html("Good Afternoon");
+        }
+        else  {
+            $(".footer").html("Happy Shopping");
+        }
     </script>
 </body>
 
