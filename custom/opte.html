@@ -8,26 +8,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/owfont-regular.css" rel="stylesheet" type="text/css">
     <style>
-        #myclock {
-            position: absolute;
-            left: 324px;
-            top: 39px;
-            background-color: #fff;
-            border-radius: 100%;
-            width: 250px;
-        }
 
+#myclock {
+    position: absolute;
+    left: 302px;
+    top: 58px;
+    background-color: #fff;
+    border-radius: 100%;
+    width: 250px;
+}
         body {
             /*background-image: url("night2.jpg")*/
-            background-color: #2190fc
+            background-color: #fc6721;
         }
 
-        .logo {
-            position: absolute;
-            top: 0;
-            right: 15px;
-            width: 75px;
-        }
+.logo {
+
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 97px;
+
+}
 
         globaltext {
             color: blanchedalmond;
@@ -63,15 +65,17 @@
             text-align: center;
         }
 
-        .footerDiv {
-            width: 620px;
-            text-align: center;
-            height: 100px;
-            bottom: 20px;
-            position: absolute;
-            font-size: 68px;
-            font-family: OpenSans-Bold;
-        }
+.footerDiv {
+
+    width: 620px;
+    text-align: center;
+    height: 100px;
+    bottom: 20px;
+    position: absolute;
+    font-size: 58px;
+    font-family: OpenSans-Bold;
+
+}
 
         .footer {
             z-index: 1000;
@@ -184,13 +188,13 @@
         var now = new Date();
         current_hour = now.getHours();
         if (current_hour > 5 && current_hour < 12) {
-            $(".footer").html("Good Morning");
+            $(".footer").html("GOOD MORNING");
         }
         else if (current_hour >= 12 && current_hour < 17) {
-            $(".footer").html("Good Afternoon");
+            $(".footer").html("GOOD AFTERNOON");
         }
         else  {
-            $(".footer").html("Happy Shopping");
+            $(".footer").html("HAPPY DUSSEHRA");
         }
     </script>
 </body>
