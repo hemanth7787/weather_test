@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>weather</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/owfont-regular.css" rel="stylesheet" type="text/css">
+    <style>
+
+#myclock {
+
+position: absolute;
+left: 660px;
+top: 48px;
+background-color: #fff;
+border-radius: 100%;
+width: 500px;
+
+}
+        body {
+            /*background-image: url("night2.jpg")*/
+            /* background-color: #fc6721; */
+         text-shadow: 6px 4px 4px #000000;
+         }
+
+.logo {
+
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 97px;
+
+}
+
+        globaltext {
+            color: blanchedalmond;
+        }
+
+        @font-face {
+            font-family: roboto;
+            src: url(Roboto-Bold.ttf);
+        }
+
+        @font-face {
+            font-family: OpenSans-Regular;
+            src: url("fonts/OpenSans-Regular.ttf");
+        }
+
+
+        @font-face {
+            font-family: OpenSans-Bold;
+            src: url("fonts/OpenSans-Bold.ttf");
+        }
+
+
+
+.weathercondtext {
+
+width: 500px;
+height: 100px;
+position: absolute;
+left: 34px;
+top: 432px;
+font-size: 48px;
+font-family: OpenSans-Bold;
+color: white;
+text-align: center;
+
+}
+
+.footerDiv {
+
+width: 1248px;
+text-align: center;
+height: 104px;
+bottom: 40px;
+position: absolute;
+font-size: 100px;
+font-family: OpenSans-Bold;
+
+}
+
+        .footer {
+            z-index: 1000;
+            color: #fff;
+        }
+
+        .footer_background {
+            position: absolute;
+            /*background-color: rgba(0, 0, 0, 1);*/
+            height: 132px;
+            width: 624px;
+            bottom: 8px;
+            left: 8px;
+        }
+
+#weatherIcon {
+
+font-size: 300px;
+position: absolute;
+left: 34px;
+top: 42px;
+color: white;
+width: 500px;
+height: 300px;
+text-align: center;
+
+}
+
+.tempDiv {
+
+position: absolute;
+left: 34px;
+top: 300px;
+color: white;
+width: 500px;
+height: 140px;
+text-align: center;
+font-size: 100px;
+font-family: OpenSans-Bold;
+
+}
+        #myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+    </style>
+</head>
+
+<body>
+        <video autoplay muted loop id="myVideo">
+                <source src="clouds1.mp4" type="video/mp4">
+              </video>
+    <div id="weatherIcon"></div>
+    <div class="tempDiv"><a class="globaltext" id="temp"></a></div>
+
+    <div class="weathercondtext globaltext"><a id="weatherCond">Weather condition</a></div>
+
+    <div id="background">
+        <div id="myclock"></div>
+    </div>
+    <!-- <img class="logo" src="je.png"> -->
+    <div class="footerDiv"><a class="footer globaltext">Loading ..</a></div>
+    <div class="footer_background"></div>
+
+    <script src="jquery-3.3.1.slim.min.js"></script>
+    <script src="js/jquery.thooClock.js"></script>
+    <script>
+        $('#myclock').thooClock({
+            size: 500,
+            dialColor: '#000000',
+            dialBackgroundColor: 'transparent',
+            secondHandColor: '#f00',
+            minuteHandColor: '#222222',
+            hourHandColor: '#222222',
+            alarmHandColor: '#FFFFFF',
+            alarmHandTipColor: '#026729',
+            hourCorrection: '+0',
+            // alarmCount:1,
+            showNumerals: true
+
+        });
+    </script>
+    <script>
+        var cityName = 'Bengaluru';
+        var weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=6a70868b22b621d4d5ea02f346e19807&units=metric';
+
+        function updatePage(temp, temp_min, temp_max, weatherCond, weatherIconId) {
+            $("#temp").html(Math.round(temp * 10) / 10 + "&#8451");
+            $("#weatherIcon").html('<i class="weathericon owf owf-' + weatherIconId + '"></i>')
+            $("#weatherCond").html(weatherCond)
+        }
+        function makeRequest() {
+            try {
+                // console.log('Make Request');
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // Typical action to be performed when the document is ready:
+                        // console.log(xhttp.responseText);
+                        var obj = JSON.parse(xhttp.responseText);
+                        localStorage.setItem('temp', obj.main.temp);
+                        // localStorage.setItem('temp_min', obj.main.temp_min);
+                        // localStorage.setItem('temp_max', obj.main.temp_max);
+                        localStorage.setItem('weatherCond', obj.weather[0].main);
+                        //localStorage.setItem('weatherIcon', 'http://openweathermap.org/img/w/' + obj.weather[0].icon + '.png');
+                        localStorage.setItem('weatherIconId', obj.weather[0].id);
+                        // UPDATE PAGE
+                        updatePage(obj.main.temp, obj.main.temp_min, obj.main.temp_max, obj.weather[0].main, obj.weather[0].id);
+                        setTimeout(makeRequest, 20000);
+                    }
+                };
+                xhttp.open("GET", weatherUrl, true);
+                xhttp.send();
+            } catch (err) {
+                console.log('UH OH, We got an error', err);
+            }
+        }
+
+        makeRequest();
+        var now = new Date();
+        current_hour = now.getHours();
+        if (current_hour > 5 && current_hour < 12) {
+            $(".footer").html("GOOD MORNING");
+        }
+        else if (current_hour >= 12 && current_hour < 17) {
+            $(".footer").html("GOOD AFTERNOON");
+        }
+        else  {
+            $(".footer").html("HAPPY SHOPPING");
+        }
+    </script>
+</body>
+
+</html>
