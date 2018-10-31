@@ -19,8 +19,9 @@
 }
         body {
             /*background-image: url("night2.jpg")*/
-            background-color: #fc6721;
-        }
+            /* background-color: #fc6721; */
+         text-shadow: 6px 4px 4px #000000;
+         }
 
 .logo {
 
@@ -74,6 +75,7 @@
     position: absolute;
     font-size: 58px;
     font-family: OpenSans-Bold;
+    
 
 }
 
@@ -114,10 +116,20 @@
             font-size: 64px;
             font-family: OpenSans-Bold;
         }
+        #myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
     </style>
 </head>
 
 <body>
+        <video autoplay muted loop id="myVideo">
+                <source src="clouds1.mp4" type="video/mp4">
+              </video>
     <div id="weatherIcon"></div>
     <div class="tempDiv"><a class="globaltext" id="temp"></a></div>
 
@@ -194,7 +206,7 @@
             $(".footer").html("GOOD AFTERNOON");
         }
         else  {
-            $(".footer").html("HAPPY DUSSEHRA");
+            $(".footer").html("HAPPY SHOPPING");
         }
     </script>
 </body>
