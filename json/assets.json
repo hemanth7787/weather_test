@@ -1,0 +1,131 @@
+[
+    {
+        "id": 2,
+        "name": "Indoor Small Screen",
+        "width": 880,
+        "height": 320,
+        "aspect_ratio": "16:9",
+        "max_slots": 6
+    },
+    {
+        "id": 3,
+        "name": "Indoor Large Entrance Screen",
+        "width": 640,
+        "height": 480,
+        "aspect_ratio": "4:3",
+        "max_slots": 6
+    },
+    {
+        "id": 6,
+        "name": "Phoenix Mall Entrance Outdoor",
+        "width": 1416,
+        "height": 797,
+        "aspect_ratio": "16:9",
+        "max_slots": 6
+    },
+    {
+        "id": 4,
+        "name": "Outdoor Assembly Area Standby",
+        "width": 1366,
+        "height": 768,
+        "aspect_ratio": "16:9",
+        "max_slots": 6
+    },
+    {
+        "id": 7,
+        "name": "ANIL SEPL ASSET1",
+        "width": 1968,
+        "height": 468,
+        "aspect_ratio": "16:9",
+        "max_slots": 6
+    },
+    {
+        "id": 8,
+        "name": "Indoor Mini Asset Screen - Kozhikode",
+        "width": 1600,
+        "height": 900,
+        "aspect_ratio": "16:9",
+        "max_slots": 6
+    },
+    {
+        "id": 9,
+        "name": "Indoor Asset Mini - Banglore",
+        "width": 1920,
+        "height": 1080,
+        "aspect_ratio": "9:16",
+        "max_slots": 6
+    },
+    {
+        "id": 10,
+        "name": "Hemanth's player",
+        "width": 1366,
+        "height": 768,
+        "aspect_ratio": "16:9",
+        "max_slots": 6
+    },
+    {
+        "id": 11,
+        "name": "Forum mall mini assets",
+        "width": 0,
+        "height": 0,
+        "aspect_ratio": "9:16",
+        "max_slots": 6
+    },
+    {
+        "id": 13,
+        "name": "Rahul Player",
+        "width": 1366,
+        "height": 768,
+        "aspect_ratio": "16:9",
+        "max_slots": 6
+    },
+    {
+        "id": 12,
+        "name": "Asset group 16:9 ",
+        "width": 0,
+        "height": 0,
+        "aspect_ratio": "16:9",
+        "max_slots": 6
+    },
+    {
+        "id": 14,
+        "name": "mananchira_1",
+        "width": 500,
+        "height": 500,
+        "aspect_ratio": "1:1",
+        "max_slots": 8
+    },
+    {
+        "id": 15,
+        "name": "mamnchira_2",
+        "width": 3000,
+        "height": 1500,
+        "aspect_ratio": "1:1",
+        "max_slots": 6
+    },
+    {
+        "id": 16,
+        "name": "mananchira_asset_group",
+        "width": 0,
+        "height": 0,
+        "aspect_ratio": "1:1",
+        "max_slots": 6
+    },
+    {
+        "id": 18,
+        "name": "AXEL SEPL TEST1",
+        "width": 150,
+        "height": 100,
+        "aspect_ratio": "1:1",
+        "max_slots": 6
+    },
+    {
+        "id": 19,
+        "name": "Demo Asset Stick PC",
+        "width": 1366,
+        "height": 768,
+        "aspect_ratio": "16:10",
+        "max_slots": 6
+    }
+]
+
